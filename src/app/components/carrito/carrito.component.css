@@ -1,0 +1,82 @@
+.carrito {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.carrito h5 {
+  margin-right: auto;
+}
+
+.carrito-productos {
+  width:auto;
+  border: 1px solid #ccc;
+  padding: 10px;  
+}
+
+.producto {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.producto .imagen {
+  margin-right: 10px;
+}
+
+.producto .contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.producto .nombre {
+  margin-right: 10px;
+  font-size: 13px;
+}
+
+.producto .acciones {
+  display: flex;
+  gap: 10px;
+}
+
+.img-pequena {
+  width: 35px; /* Ajusta el valor según tu preferencia */
+  height: 40px; /* Ajusta el valor según tu preferencia */
+}
+
+.cantidad-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.btn-cantidad {
+  padding: 0px 8px;
+  font-size: 17px;
+  border: none; /* Eliminar el borde */
+}
+
+.input-cantidad {
+  width: 13px;
+  padding: 0px 0px;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 12px;
+  text-align: center;
+  border: none; /* Eliminar el borde */
+}
+
+.carrito-scroll {
+  height: 200px; /* Ajusta la altura deseada */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.container{
+  background: white;
+  padding: 50px 25px 50px 25px;
+}
+.precio-wrapper {
+  width: 63px; /* Ajusta el valor según tus necesidades */
+  text-align: right; /* Para alinear el precio a la derecha */
+}

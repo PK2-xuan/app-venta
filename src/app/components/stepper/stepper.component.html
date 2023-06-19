@@ -1,0 +1,153 @@
+<article>
+  <mat-stepper linear #stepper style="width: 700px; height: 380px">
+    <mat-step [stepControl]="firstFormGroup">
+      <div class="contenedor-step1 mt-5">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Validacion</ng-template>
+          <mat-form-field>
+            <mat-label>Digite su dni</mat-label>
+
+            <input
+              matInput
+              placeholder="ejem. 727272727"
+              formControlName="firstCtrl"
+              required
+              inputmode="numeric"
+              pattern="[0-9]*"
+              minlength="8"
+              maxlength="8"
+            />
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </div>
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup">
+      <ng-template matStepLabel>Confirmacion</ng-template>
+
+      <form [formGroup]="secondFormGroup" class="inline-form mt-4">
+        <div class="form-row">
+          <div class="form-column efect">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input
+              type="text"
+              id="nombre"
+              formControlName="nombre"
+              class="form-input"
+              placeholder="Xuan Jordi"
+            />
+          </div>
+
+          <div class="form-column efect">
+            <label for="edad" class="form-label">Edad</label>
+            <input
+              type="text"
+              id="edad"
+              formControlName="edad"
+              class="form-input"
+              placeholder="mayor de edad"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-column efect">
+            <label for="apellido" class="form-label">Apellido Paterno</label>
+            <input
+              type="text"
+              id="apellido"
+              formControlName="apellido"
+              class="form-input"
+              placeholder="Camacho"
+            />
+          </div>
+
+          <div class="form-column efect">
+            <label for="materno" class="form-label">Apellido Materno</label>
+            <input
+              type="text"
+              id="materno"
+              formControlName="materno"
+              class="form-input"
+              placeholder="Meza"
+            />
+          </div>
+        </div>
+      </form>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Comprado</ng-template>
+      <div class="container clase-fin">
+        <div>
+          <h1>Compra Exitosa !!!</h1>
+        </div>
+      </div>
+
+      <div class="botones">
+        <!-- <button mat-button matStepperPrevious>Regresar</button> -->
+        <button mat-button (click)="cerrarStepper()">Culminar</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+
+  <!-- <mat-stepper class="color" style="width: 700px; height: 400px">
+    <mat-step label="Step 1" state="DNI">
+      <div class="container contenedor-step1 mt-5">
+        <div class="step-content">
+          <h2>Ingrese el DNI</h2>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="ejem. 727272727"
+              [(ngModel)]="dni"
+            />
+          </div>
+          <div class="button-container">
+            <button matStepperNext class="btn btn-primary">Next</button>
+          </div>
+        </div>
+      </div>
+    </mat-step>
+
+    <mat-step label="Step 2" state="chat">
+      <p>Pedidos</p>
+      <div>
+        <table>
+          <tr>
+            <td>Columna 1 - Fila 1</td>
+            <td>Columna 2 - Fila 1</td>
+          </tr>
+          <tr>
+            <td>Columna 1 - Fila 2</td>
+            <td>Columna 2 - Fila 2</td>
+          </tr>
+          <tr>
+            <td>Columna 1 - Fila 3</td>
+            <td>Columna 2 - Fila 3</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step label="Step 3">
+      <p>Culminar compra</p>
+      <div>
+        <button mat-button (click)="finalizar()">Finalizar</button>
+      </div>
+    </mat-step>
+  </mat-stepper> -->
+</article>

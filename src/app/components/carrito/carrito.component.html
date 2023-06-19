@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="carrito d-flex align-items-center justify-content-between">
+    <h5 class="mr-auto">Carrito de Compra</h5>
+    <button type="button" class="btn btn-primary" (click)="vaciarCarrito()">
+      Clear All
+    </button>
+  </div>
+
+  <div class="carrito-productos pb-1">
+    <div class="carrito-scroll">
+      <div class="producto" *ngFor="let producto of productos; let i = index">
+        <div class="imagen">
+          <img [src]="producto.imagen" [alt]="producto.nombre" class="img-thumbnail img-pequena" />
+        </div>
+        <div class="contenido">
+          <span class="nombre">{{ producto.nombre }}</span>
+  
+          <div class="acciones">
+            <div class="cantidad-wrapper">
+              <button class="btn-cantidad bg-dark btn btn-outline-secondary" (click)="decrementarCantidad(producto)">-</button>
+              <input type="text" class="input-cantidad" [(ngModel)]="producto.cantidad" />
+              <button class="btn-cantidad bg-dark btn btn-outline-secondary" (click)="incrementarCantidad(producto)" style="padding: 0px 6px">+</button>
+            </div>
+  
+            <div class="precio-wrapper">
+              <span>{{ producto.precio * producto.cantidad | currency:"s/"}}</span>
+            </div>
+  
+            <i class="fas fa-trash mt-1" (click)="eliminarProducto(i)" style="cursor: pointer; margin-right: 10px;"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+  <div>
+    <table class="table">
+      <tr>
+        <td>Subtotal</td>
+        <td class="text-end">{{ subtotal | currency:"s/" }}</td>
+      </tr>
+      <tr>
+        <td>IGV (18%)</td>
+        <td class="text-end">{{ igv | currency:"s/"}}</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td class="text-end">{{ total | currency:"s/" }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="text-center">
+    <button   
+    (click)="openComponentDialog()"
+      class="btn btn-outline-primary"
+    >
+      C O M P R A R
+    </button>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,30 @@
+<!-- <div class="card-container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let licor of listaLicores; let i = index;">
+      <div class="card">
+        <div class="color-img"><img [src]="licor.imagen" [alt]="licor.nombre" class="card-image"></div>
+        <div class="card-content">
+          <h3 class="card-title">{{ licor.nombre }}</h3>
+          <p class="card-description">{{ licor.descripcion }}</p>
+          <button type="button" class="btn btn-success" (click)="agregarAlCarrito(licor)">AGREGAR</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="card-container">
+  <div class="row">
+    <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let licor of listaLicores; let i = index;">
+      <div class="card">
+        <div class="color-img"><img [src]="licor.imagen" [alt]="licor.nombre" class="card-image"></div>
+        <div class="card-content">
+          <h3 class="card-title">{{ licor.nombre }}</h3>
+          <p class="card-description">{{ licor.descripcion }}</p>
+          <button type="button" class="btn btn-success" (click)="agregarAlCarrito(licor)">AGREGAR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+.contenedor-step1 {
+  background: #F2F3F4;
+  color: black;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.clase-fin{
+  background: #F2F3F4;
+  text-align: center;
+  width: 250px;
+  height: 100px;
+  margin-top: 2em;
+  padding-top: 2rem;
+}
+.botones{
+  margin-top: 2em;
+  text-align: center;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.form-column {
+  flex-basis: 48%;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0px;
+  font-weight: normal;
+  font-size: 13px;
+
+}
+
+.form-input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.efect{
+  background: #F2F3F4;
+  padding: 5px;
+  border-radius: 4px;
+}

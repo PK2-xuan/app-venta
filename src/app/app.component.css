@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+
+  }
+  
+  .left-component {
+    width: 68%;
+  }
+  
+  .right-component {
+    width: 31%;
+  }
+  .space{
+    margin-left: 200px;
+    padding: 50px 0 0 0;
+    font-family: 'Dancing Script', cursive;
+  }
+  body{
+    background: #e1e3ea;
+  }
