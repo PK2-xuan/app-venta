@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 
 import { CarritoService } from "src/app/service/carrito.service";
 import { MatDialogRef } from '@angular/material/dialog';
+import { ReniecService } from 'src/app/service/reniec.service';
 
 @Component({
   selector: 'app-stepper',
@@ -26,9 +27,19 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class StepperComponent{
 
+  dni: string = ''
+  nombre: string = ''
+  apellidoPaterno: string = ''
+  apellidoMaterno: string = ''
+  successRequest: boolean = false
+  cargando: boolean = false
+  mensajeApi: string = ''
+
   productosCarrito: any[] = [];
 
-  constructor(private _formBuilder: FormBuilder, private dialogRef: MatDialogRef<StepperComponent>, private carritoService: CarritoService) {  }
+  constructor(
+    private _formBuilder: FormBuilder, private dialogRef: MatDialogRef<StepperComponent>, 
+    private carritoService: CarritoService, public reniecService: ReniecService) {  }
 
   ngOnInit() {
     this.carritoService.carritoActualizado.subscribe((productos) => {
@@ -52,12 +63,40 @@ export class StepperComponent{
     this.carritoService.vaciarCarrito();
     this.dialogRef.close();
   }
- 
-  // cerrarStepper(stepper: MatStepper) {
-  //   stepper.selectedIndex = -1; // Establece el índice en un valor fuera del rango de los pasos disponibles
-  // }
 
-  //   dni!: string;
-  // ngOnInit() { this.dni = ''; }
-  // finalizar(){}
+  validarDatos(): any {
+    // pasar al siguiente matStepperNext
+
+    this.nombre = ''
+    this.apellidoPaterno = ''
+    this.apellidoMaterno = ''
+    this.successRequest = false
+    this.cargando = true
+    this.mensajeApi = ''
+
+    this.reniecService.getDatosReniec(this.dni).subscribe({
+      next: (data: any) => {
+        let { nombres, apellidoPaterno, apellidoMaterno, success } = data 
+        this.nombre = nombres
+        this.apellidoPaterno = apellidoPaterno
+        this.apellidoMaterno = apellidoMaterno
+        this.successRequest = success
+        this.cargando = false
+        this.mensajeApi = success ? 'Datos encontrados' : 'Datos no encontrados, el cliente es menor de edad'
+
+        // pasar al siguiente matStepperNext
+        this.secondFormGroup.controls['nombre'].setValue(nombres);
+        this.secondFormGroup.controls['apellido'].setValue(apellidoPaterno);
+        this.secondFormGroup.controls['materno'].setValue(apellidoMaterno);
+        
+      },
+      error: (error: any) => {
+        console.log('error', error);
+        this.cargando = false
+        this.mensajeApi = 'Error al consultar la API'
+      }
+    })
+  }
+ 
+  
 }
