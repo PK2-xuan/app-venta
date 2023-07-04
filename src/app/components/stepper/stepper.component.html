@@ -15,11 +15,12 @@
               inputmode="numeric"
               pattern="[0-9]*"
               minlength="8"
-              maxlength="8"
+              maxlength="8" 
+              [(ngModel)]="dni"
             />
           </mat-form-field>
           <div>
-            <button mat-button matStepperNext>Siguiente</button>
+            <button mat-button matStepperNext (click)="validarDatos()">Siguiente</button>
           </div>
         </form>
       </div>
@@ -29,51 +30,52 @@
       <ng-template matStepLabel>Confirmacion</ng-template>
 
       <form [formGroup]="secondFormGroup" class="inline-form mt-4">
-        <div class="form-row">
-          <div class="form-column efect">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input
-              type="text"
-              id="nombre"
-              formControlName="nombre"
-              class="form-input"
-              placeholder="Xuan Jordi"
-            />
-          </div>
 
-          <div class="form-column efect">
-            <label for="edad" class="form-label">Edad</label>
-            <input
-              type="text"
-              id="edad"
-              formControlName="edad"
-              class="form-input"
-              placeholder="mayor de edad"
-            />
+        <div *ngIf="!cargando && !this.successRequest">
+          <div class="alert alert-danger" role="alert">
+            <p>{{ this.mensajeApi }}</p>
           </div>
         </div>
 
-        <div class="form-row">
-          <div class="form-column efect">
-            <label for="apellido" class="form-label">Apellido Paterno</label>
-            <input
-              type="text"
-              id="apellido"
-              formControlName="apellido"
-              class="form-input"
-              placeholder="Camacho"
-            />
+        <div *ngIf="this.successRequest">
+          <div class="form-row">
+            <div class="form-column efect">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input
+                type="text"
+                id="nombre"
+                formControlName="nombre"
+                class="form-input"
+                placeholder=""
+                [value]="nombre"
+              />
+            </div>
           </div>
-
-          <div class="form-column efect">
-            <label for="materno" class="form-label">Apellido Materno</label>
-            <input
-              type="text"
-              id="materno"
-              formControlName="materno"
-              class="form-input"
-              placeholder="Meza"
-            />
+  
+          <div class="form-row">
+            <div class="form-column efect">
+              <label for="apellido" class="form-label">Apellido Paterno</label>
+              <input
+                type="text"
+                id="apellido"
+                formControlName="apellido"
+                class="form-input"
+                placeholder=""
+                [value]="apellidoPaterno"
+              />
+            </div>
+  
+            <div class="form-column efect">
+              <label for="materno" class="form-label">Apellido Materno</label>
+              <input
+                type="text"
+                id="materno"
+                formControlName="materno"
+                class="form-input"
+                placeholder=""
+                [value]="apellidoMaterno"
+              />
+            </div>
           </div>
         </div>
       </form>
@@ -85,7 +87,7 @@
     </mat-step>
 
     <mat-step>
-      <ng-template matStepLabel>Comprado</ng-template>
+      <ng-template matStepLabel>Compra</ng-template>
       <div class="container clase-fin">
         <div>
           <h1>Compra Exitosa !!!</h1>
